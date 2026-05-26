@@ -1,6 +1,6 @@
 
+function adivina() {
 
-while (true) {
     let numero_aleatorio = Math.floor(Math.random() * 10)
 
     let numero = prompt("colocar numero")
@@ -9,3 +9,8 @@ while (true) {
     
     alert(numero_aleatorio)
 }
+
+
+adivina()
+
+setInterval(adivina, 5000)

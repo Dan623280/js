@@ -1,0 +1,101 @@
+
+{
+  "estudiantes": [
+    {
+      "id": 1,
+      "nombre": "Daniel Álvarez",
+      "edad": 16,
+      "curso": "11A"
+    },
+    {
+      "id": 2,
+      "nombre": "Ana Martínez",
+      "edad": 15,
+      "curso": "10B"
+    },
+    {
+      "id": 3,
+      "nombre": "Luis Gómez",
+      "edad": 17,
+      "curso": "11A"
+    },
+    {
+      "id": 4,
+      "nombre": "Camila Torres",
+      "edad": 14,
+      "curso": "9C"
+    }
+  ],
+
+  "profesores": [
+    {
+      "id": 1,
+      "nombre": "Carlos Pérez",
+      "materia_id": 1
+    },
+    {
+      "id": 2,
+      "nombre": "Laura Sánchez",
+      "materia_id": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Miguel Rodríguez",
+      "materia_id": 3
+    }
+  ],
+
+  "materias": [
+    {
+      "id": 1,
+      "nombre": "Matemáticas"
+    },
+    {
+      "id": 2,
+      "nombre": "Programación"
+    },
+    {
+      "id": 3,
+      "nombre": "Inglés"
+    }
+  ],
+
+  "notas": [
+    {
+      "id": 1,
+      "estudiante_id": 1,
+      "materia_id": 1,
+      "nota": 4.5
+    },
+    {
+      "id": 2,
+      "estudiante_id": 1,
+      "materia_id": 2,
+      "nota": 4.8
+    },
+    {
+      "id": 3,
+      "estudiante_id": 2,
+      "materia_id": 1,
+      "nota": 3.9
+    },
+    {
+      "id": 4,
+      "estudiante_id": 2,
+      "materia_id": 3,
+      "nota": 4.2
+    },
+    {
+      "id": 5,
+      "estudiante_id": 3,
+      "materia_id": 2,
+      "nota": 5.0
+    },
+    {
+      "id": 6,
+      "estudiante_id": 4,
+      "materia_id": 3,
+      "nota": 3.7
+    }
+  ]
+}
