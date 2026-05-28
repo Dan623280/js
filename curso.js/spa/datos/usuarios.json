@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "usuario": "juan.perez",
+    "password": "Juan2024*",
+    "rol": "admin",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "usuario": "maria.gomez",
+    "password": "Maria#123",
+    "rol": "user",
+    "estado": "activo"
+  },
+  {
+    "id": 3,
+    "usuario": "carlos.lopez",
+    "password": "Carlos789!",
+    "rol": "user",
+    "estado": "inactivo"
+  },
+  {
+    "id": 4,
+    "usuario": "ana.torres",
+    "password": "AnaSecure1!",
+    "rol": "admin",
+    "estado": "activo"
+  },
+  {
+    "id": 5,
+    "usuario": "luis.martinez",
+    "password": "LuisPass456$",
+    "rol": "user",
+    "estado": "inactivo"
+  },
+  {
+    "id": 6,
+    "usuario": "sofia.ramirez",
+    "password": "Sofia2025?",
+    "rol": "user",
+    "estado": "activo"
+  }
+]
