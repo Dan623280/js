@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "Nombre": "Diseño de interfaz",
+    "Descripción": "Crear el diseño inicial de la interfaz de usuario para la aplicación.",
+    "Estado": "En progreso",
+    "Fecha de creación": "2026-06-01",
+    "Responsable": "Daniel Álvarez"
+  },
+  {
+    "id": 2,
+    "Nombre": "Implementación de API",
+    "Descripción": "Desarrollar las rutas y controladores para la gestión de tareas.",
+    "Estado": "Pendiente",
+    "Fecha de creación": "2026-06-02",
+    "Responsable": "María González"
+  },
+  {
+    "id": 3,
+    "Nombre": "Pruebas de funcionalidad",
+    "Descripción": "Verificar que todas las funcionalidades de la aplicación operen correctamente.",
+    "Estado": "Completado",
+    "Fecha de creación": "2026-05-30",
+    "Responsable": "Carlos Rodríguez"
+  }
+]
