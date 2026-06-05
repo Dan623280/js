@@ -1,40 +1,135 @@
 import { router } from "./router.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+import {
+    guardarSesion,
+    cerrarSesion
+}
+from "./auth.js";
 
-    console.log("Aplicación iniciada");
-
-    router();
-
-    document.body.addEventListener("click", (e) => {
-
-        const enlace = e.target.closest("[data-link]");
-
-        if (!enlace) return;
-
-        e.preventDefault();
-
-        console.log(
-            "Navegando a:",
-            enlace.getAttribute("href")
-        );
-
-        history.pushState(
-            null,
-            "",
-            enlace.getAttribute("href")
-        );
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
         router();
-    });
 
-    window.addEventListener("popstate", () => {
+        document.body.addEventListener(
+            "click",
+            async (e) => {
 
-        console.log(
-            "Atrás/Adelante:",
-            window.location.pathname
+                const enlace =
+                    e.target.closest(
+                        "[data-link]"
+                    );
+
+                if (enlace) {
+
+                    e.preventDefault();
+
+                    history.pushState(
+                        null,
+                        "",
+                        enlace.getAttribute(
+                            "href"
+                        )
+                    );
+
+                    router();
+                }
+
+                if (
+                    e.target.id ===
+                    "logout"
+                ) {
+
+                    cerrarSesion();
+
+                    history.pushState(
+                        null,
+                        "",
+                        "/login"
+                    );
+
+                    router();
+                }
+            }
         );
 
-        router();
-    });
-});
+        document.addEventListener(
+            "submit",
+            async (e) => {
+
+                if (
+                    e.target.id !==
+                    "loginForm"
+                ) return;
+
+                e.preventDefault();
+
+                const correo =
+                    document
+                    .getElementById(
+                        "correo"
+                    ).value;
+
+                const password =
+                    document
+                    .getElementById(
+                        "password"
+                    ).value;
+
+                const respuesta =
+                    await fetch(
+                        "/api/login",
+                        {
+                            method:
+                                "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    {
+                                        correo,
+                                        password
+                                    }
+                                )
+                        }
+                    );
+
+                const datos =
+                    await respuesta.json();
+
+                if (datos.ok) {
+
+                    guardarSesion(
+                        datos.usuario
+                    );
+
+                    history.pushState(
+                        null,
+                        "",
+                        "/dashboard"
+                    );
+
+                    router();
+
+                } else {
+
+                    document
+                    .getElementById(
+                        "mensaje"
+                    ).textContent =
+                        datos.mensaje;
+                }
+            }
+        );
+
+        window.addEventListener(
+            "popstate",
+            router
+        );
+    }
+);

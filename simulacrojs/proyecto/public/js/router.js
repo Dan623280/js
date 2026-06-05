@@ -1,5 +1,9 @@
-import Home from "./views/home.js";
+import Home from "./views/Home.js";
 import Productos from "./views/Productos.js";
+import Login from "./views/Login.js";
+import Dashboard from "./views/Dashboard.js";
+
+import { haySesion } from "./auth.js";
 
 export async function router() {
 
@@ -9,19 +13,36 @@ export async function router() {
     const ruta =
         window.location.pathname;
 
+    console.log("Ruta actual:", ruta);
+
     switch (ruta) {
 
         case "/":
-
-            app.innerHTML =
-                Home();
-
+            app.innerHTML = Home();
             break;
 
         case "/productos":
+            app.innerHTML = await Productos();
+            break;
 
-            app.innerHTML =
-                await Productos();
+        case "/login":
+            app.innerHTML = Login();
+            break;
+
+        case "/dashboard":
+
+            if (!haySesion()) {
+
+                history.pushState(
+                    null,
+                    "",
+                    "/login"
+                );
+
+                return router();
+            }
+
+            app.innerHTML = Dashboard();
 
             break;
 
@@ -29,7 +50,7 @@ export async function router() {
 
             app.innerHTML = `
                 <h1>404</h1>
-                <p>Página no encontrada</p>
+                <p>Ruta no encontrada</p>
             `;
     }
 }

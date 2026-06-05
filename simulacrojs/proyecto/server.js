@@ -13,8 +13,49 @@ app.get("/api/productos", (req, res) => {
 
     res.json(datos.productos);
 });
+app.use(express.json());
 
+app.post("/api/login",
+(req, res) => {
 
+    const {
+        correo,
+        password
+    } = req.body;
+
+    const datos =
+        JSON.parse(
+            fs.readFileSync(
+                "./db_usuarios.json",
+                "utf8"
+            )
+        );
+
+    const usuario =
+        datos.usuarios.find(
+            usuario =>
+                usuario.correo ===
+                    correo &&
+                usuario.password ===
+                    password
+        );
+
+    if (!usuario) {
+
+        return res
+        .status(401)
+        .json({
+            ok: false,
+            mensaje:
+                "Credenciales incorrectas"
+        });
+    }
+
+    res.json({
+        ok: true,
+        usuario
+    });
+});
 
 // Captura cualquier otra ruta y devuelve index.html
 app.use((req, res) => {
